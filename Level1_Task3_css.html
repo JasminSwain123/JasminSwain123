@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            width: 200px;
+            height: 260px;
+            background-color: #2196F3;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-rows: 1fr 4fr;
+            grid-gap: 10px;
+        }
+        .display {
+            background-color: #fff;
+            border-radius: 5px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+            font-size: 2em;
+            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+        .button {
+            background-color: #42A5F5;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #1E88E5;
+        }
+        .button:active {
+            background-color: #1976D2;
+        }
+        .button.double {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="button" onclick="appendNumber(7)">7</button>
+            <button class="button" onclick="appendNumber(8)">8</button>
+            <button class="button" onclick="appendNumber(9)">9</button>
+            <button class="button" onclick="appendNumber(4)">4</button>
+            <button class="button" onclick="appendNumber(5)">5</button>
+            <button class="button" onclick="appendNumber(6)">6</button>
+            <button class="button" onclick="appendNumber(1)">1</button>
+            <button class="button" onclick="appendNumber(2)">2</button>
+            <button class="button" onclick="appendNumber(3)">3</button>
+            <button class="button double" onclick="appendNumber(0)">0</button>
+            <button class="button" onclick="setOperation('+')">+</button>
+            <button class="button" onclick="setOperation('-')">-</button>
+            <button class="button double" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let currentNumber = '';
+        let previousNumber = '';
+        let operator = null;
+
+        const display = document.getElementById('display');
+
+        function appendNumber(number) {
+            currentNumber += number;
+            display.textContent = currentNumber;
+        }
+
+        function setOperation(op) {
+            if (currentNumber === '') return;
+            if (previousNumber !== '') {
+                calculate();
+            }
+            operator = op;
+            previousNumber = currentNumber;
+            currentNumber = '';
+        }
+
+        function calculate() {
+            if (currentNumber === '' || previousNumber === '') return;
+            let result;
+            const prev = parseFloat(previousNumber);
+            const current = parseFloat(currentNumber);
+
+            if (isNaN(prev) || isNaN(current)) return;
+
+            switch (operator) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                default:
+                    return;
+            }
+
+            currentNumber = result;
+            operator = null;
+            previousNumber = '';
+            display.textContent = result;
+        }
+    </script>
+</body>
+</html>
