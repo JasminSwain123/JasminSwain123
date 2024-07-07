@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #0b74e5;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .header p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .upload-button {
+            background-color: #00b22d;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .search-bar .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar .input-container input {
+            padding: 10px 10px 10px 30px;
+            margin: 5px;
+            font-size: 1em;
+        }
+        .search-bar .input-container i {
+            position: absolute;
+            left: 10px;
+            font-size: 1em;
+            color: #333;
+        }
+        .search-bar select, .search-bar button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 1em;
+        }
+        .search-bar button {
+            background-color: #00b22d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .navigation {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: #0b74e5;
+        }
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+        }
+        .navigation .post-job {
+            background-color: #00b22d;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .image-template {
+            position: absolute;
+            right: 50px;
+            bottom: 0;
+            width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <a href="#">Home</a>
+        <a href="#">Browse Job</a>
+        <a href="#">Pages</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+        <a href="#" class="post-job">Post A Job</a>
+        <a href="#">Log In</a>
+    </div>
+    <div class="header">
+        <h1>Find your Dream Job</h1>
+        <p>4536+ Jobs listed</p>
+        <p>We provide online instant cash loans with quick approval that suit your term length</p>
+        <a href="#" class="upload-button">Upload Your Resume</a>
+        <img src="https://www.careerhigher.co/wp-content/uploads/2021/03/How-to-identify-your-dream-job-1.png" alt="Template Image" class="image-template">
+    </div>
+    <div class="container">
+        <div class="search-bar">
+            <div class="input-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search keyword">
+            </div>
+            <input type="text" placeholder="Location">
+            <select>
+                <option>Category</option>
+            </select>
+            <button>Find Job</button>
+        </div>
+    </div>
+</body>
+</html>
