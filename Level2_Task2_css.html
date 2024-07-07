@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e0f7fa, #80deea);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quiz-container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .quiz-container h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #00796b;
+        }
+        .quiz-container .options {
+            list-style: none;
+            padding: 0;
+        }
+        .quiz-container .options li {
+            margin: 10px 0;
+        }
+        .quiz-container .options label {
+            display: block;
+            background: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .quiz-container .options input[type="radio"] {
+            display: none;
+        }
+        .quiz-container .options input[type="radio"]:checked + label {
+            background: #00bcd4;
+            color: white;
+        }
+        .quiz-container .options label:hover {
+            background: #e0f7fa;
+        }
+        .image-decor {
+            position: absolute;
+        }
+        .image-decor img {
+            width: 50px;
+            height: auto;
+        }
+        .image1 {
+            top: -20px;
+            left: 20px;
+            
+        }
+        .image2 {
+            top: -20px;
+            right: 20px;
+        }
+        .image3 {
+            bottom: 20px;
+            left: 20px;
+        }
+        .image4 {
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Question 6/13</h2>
+        <p>Have you practiced sport or any physical activity out of your working hours at least 30 min or more during the last month?</p>
+        <ul class="options">
+            <li>
+                <input type="radio" id="option1" name="activity" value="1">
+                <label for="option1">3 times or more per week</label>
+            </li>
+            <li>
+                <input type="radio" id="option2" name="activity" value="2">
+                <label for="option2">1 or 2 times per week</label>
+            </li>
+            <li>
+                <input type="radio" id="option3" name="activity" value="3">
+                <label for="option3">Less than 4 times per month</label>
+            </li>
+            <li>
+                <input type="radio" id="option4" name="activity" value="4">
+                <label for="option4">I don't practise sport during the month</label>
+            </li>
+        </ul>
+        <div class="image-decor image1">
+            <img src="https://png.pngtree.com/element_our/20200702/ourlarge/pngtree-cute-animal-monkey-decorative-frame-material-image_2281997.jpg" alt="Decorative Image">
+        </div>
+        <div class="image-decor image2">
+            <img src="https://png.pngtree.com/png-clipart/20220111/original/pngtree-yellow-cute-waving-kitten-decorative-elements-png-image_7093670.png" alt="Decorative Image">
+        </div>
+        <div class="image-decor image3">
+            <img src="https://png.pngtree.com/png-clipart/20210308/original/pngtree-hand-painted-cute-decorative-animal-lamb-balloon-picture-png-image_5778857.jpg" alt="Decorative Image">
+        </div>
+        <div class="image-decor image4">
+            <img src="https://i5.walmartimages.com/asr/040d8176-1a1b-4092-a2a4-66088282d116.b45e01ea87351837f08cf3a7cf2b67de.jpeg" alt="Decorative Image">
+        </div>
+    </div>
+</body>
+</html>
