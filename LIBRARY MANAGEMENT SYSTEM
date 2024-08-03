@@ -1,0 +1,181 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+// LibraryItem.java
+abstract class LibraryItem {
+    private String title;
+    private String category;
+    private int year;
+    private boolean isCheckedOut;
+
+    public LibraryItem(String title, String category, int year) {
+        this.title = title;
+        this.category = category;
+        this.year = year;
+        this.isCheckedOut = false;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public boolean isCheckedOut() {
+        return isCheckedOut;
+    }
+
+    public void checkOut() {
+        isCheckedOut = true;
+    }
+
+    public void returnItem() {
+        isCheckedOut = false;
+    }
+
+    @Override
+    public String toString() {
+        return "LibraryItem{" +
+                "title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", year=" + year +
+                '}';
+    }
+}
+
+// Book.java
+class Book extends LibraryItem {
+    private String author;
+
+    public Book(String title, String author, String category, int year) {
+        super(title, category, year);
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + getTitle() + '\'' +
+                ", author='" + author + '\'' +
+                ", category='" + getCategory() + '\'' +
+                ", year=" + getYear() +
+                '}';
+    }
+}
+
+// LibraryService.java
+class LibraryService {
+    private List<LibraryItem> items;
+
+    public LibraryService() {
+        this.items = new ArrayList<>();
+    }
+
+    public void addItem(LibraryItem item) {
+        items.add(item);
+    }
+
+    public List<LibraryItem> searchByTitle(String title) {
+        List<LibraryItem> result = new ArrayList<>();
+        for (LibraryItem item : items) {
+            if (item.getTitle().equalsIgnoreCase(title)) {
+                result.add(item);
+            }
+        }
+        return result;
+    }
+
+    public List<LibraryItem> searchByAuthor(String author) {
+        List<LibraryItem> result = new ArrayList<>();
+        for (LibraryItem item : items) {
+            if (item instanceof Book && ((Book) item).getAuthor().equalsIgnoreCase(author)) {
+                result.add(item);
+            }
+        }
+        return result;
+    }
+
+    // More methods for check out, return, etc.
+}
+
+// LibraryUI.java
+public class LibraryUI {
+    private LibraryService libraryService;
+    private Scanner scanner;
+
+    public LibraryUI() {
+        libraryService = new LibraryService();
+        scanner = new Scanner(System.in);
+    }
+
+    public void start() {
+        while (true) {
+            System.out.println("Library Management System");
+            System.out.println("1. Add Book");
+            System.out.println("2. Search by Title");
+            System.out.println("3. Search by Author");
+            System.out.println("4. Exit");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addBook();
+                    break;
+                case 2:
+                    searchByTitle();
+                    break;
+                case 3:
+                    searchByAuthor();
+                    break;
+                case 4:
+                    System.exit(0);
+            }
+        }
+    }
+
+    private void addBook() {
+        System.out.print("Enter title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter author: ");
+        String author = scanner.nextLine();
+        System.out.print("Enter category: ");
+        String category = scanner.nextLine();
+        System.out.print("Enter year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+
+        Book book = new Book(title, author, category, year);
+        libraryService.addItem(book);
+        System.out.println("Book added successfully!");
+    }
+
+    private void searchByTitle() {
+        System.out.print("Enter title: ");
+        String title = scanner.nextLine();
+        System.out.println("Search results:");
+        libraryService.searchByTitle(title).forEach(System.out::println);
+    }
+
+    private void searchByAuthor() {
+        System.out.print("Enter author: ");
+        String author = scanner.nextLine();
+        System.out.println("Search results:");
+        libraryService.searchByAuthor(author).forEach(System.out::println);
+    }
+
+    public static void main(String[] args) {
+        new LibraryUI().start();
+    }
+}
